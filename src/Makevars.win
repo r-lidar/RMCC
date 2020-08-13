@@ -1,0 +1,27 @@
+PKG_CPPFLAGS = -Wno-deprecated-declarations
+SOURCES = ./Algorithm.cpp \
+					./CoordinateInterval.cpp \
+					./DisjointRegions.cpp \
+					./DuplicatePoints.cpp \
+					./Geometry3D.cpp \
+					./GridBase.cpp \
+					./InterpolationRegion.cpp \
+					./LineIndent.cpp \
+					./LocaleUtilities.cpp \
+					./OutputCsvFile.cpp \
+					./PointCanopyHeightFile.cpp \
+					./PointCsvFile.cpp \
+					./PointIO.cpp \
+					./PointVector.cpp \
+					./ProgressBar.cpp \
+					./R_MCC.cpp \
+					./RasterSurface.cpp \
+					./RcppExports.cpp \
+					./RegularizedSpline.cpp \
+					./StackedPoints.cpp \
+					./SurfaceInterpolation.cpp \
+					./UnclassifiedPoints.cpp \
+					tpsdemo/spline.cpp
+
+TEMP1   =  $(SOURCES:.cpp=.o)
+OBJECTS =  $(TEMP1:.c=.o)
