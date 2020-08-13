@@ -16,14 +16,14 @@
 #define MCC_IPOINT_VECTOR_H
 
 #include <boost/cstdint.hpp>
-#ifdef _MSC_VER
+/*#ifdef _MSC_VER
 // See note below.
 #include "PointVectorIterator.h"
 #include "PointVectorIteratorImpl.h"
-#else
+#else*/
 #include <boost/iterator.hpp>
 #include "any_iterator/any_iterator.hpp"
-#endif
+//#endif
 
 namespace mcc
 {
@@ -34,7 +34,7 @@ namespace mcc
     public:
       typedef boost::uint_least32_t size_type;
 
-#ifdef _MSC_VER
+/*#ifdef _MSC_VER
       // The Microsoft compiler crashes when compiling PointVector.cpp
       // (perhaps the combination of IteratorTypeErase::any_iterator and
       // boost::indirect_iterator is too complex template code for it to
@@ -45,7 +45,7 @@ namespace mcc
 
       typedef PointVectorIterator<const IPoint>
       const_iterator;
-#else
+#else*/
       typedef IteratorTypeErasure::any_iterator<
         IPoint,
         boost::forward_traversal_tag
@@ -57,7 +57,7 @@ namespace mcc
         boost::forward_traversal_tag
       >
       const_iterator;
-#endif
+//#endif
 
       // Number of points in vector
       virtual size_type count() const = 0;
