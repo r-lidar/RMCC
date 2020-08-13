@@ -1,0 +1,19 @@
+Package: RMCC
+Type: Package
+Title: Multiscale Curvature Classification of ground returns in 3-D lidar point clouds, designed for forested environments  
+Version: 0.1.0
+Authors@R: c(
+    person("Jean-Romain", "Roussel", email = "jean-romain.roussel.1@ulaval.ca", role = c("aut", "cre", "cph")),
+    person("Evans", "Jeffrey S", email = "", role = c("aut", "ctb", "cph"), comment = "Is the author of the mcc code"),
+    person("Hudak", "Andrew T", email = "", role = c("aut", "ctb", "cph"), comment = "Is the author of the mcc code"),
+    person("Jarno", "Elonen", email = "", role = c("cph"), comment = "Is the author of thin plate spline code"))
+Description: Multiscale Curvature Classification of ground returns in 3-D lidar point clouds, designed for forested environments  
+License: Apache License
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.2
+LinkingTo: 
+    Rcpp, BH
+Imports: 
+    Rcpp
