@@ -2,14 +2,9 @@
 #include <boost/shared_ptr.hpp>
 
 #include "Algorithm.h"
-#include "IDataFormat.h"
-#include "IXyzPointReader.h"
-#include "LocaleUtilities.h"
-#include "PointCsvFile.h"
-#include "PointIO.h"
 #include "PointVector.h"
-#include "ProgramExceptions.h"
-#include "SplineExceptions.h"
+//#include "ProgramExceptions.h"
+//#include "SplineExceptions.h"
 #include "SurfaceInterpolation.h"
 #include "UnclassifiedPoints.h"
 #include "XyExtent.h"
