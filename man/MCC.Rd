@@ -59,5 +59,5 @@ up or down by 0.1 m increments (if data are in meters; 0.3 if data are in feet).
 \references{
 Evans, Jeffrey S.; Hudak, Andrew T. 2007. A multiscale curvature
 algorithm for classifying discrete return LiDAR in forested environments.
-Geoscience and Remote Sensing. 45(4): 1029-1038.
+IEEE Transactions on Geoscience and Remote Sensing. 45(4): 1029-1038.
 }
