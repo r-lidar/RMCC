@@ -26,7 +26,6 @@
 #include "ISurfaceInterpolation.h"
 #include "IUnclassifiedPoints.h"
 #include "LineIndent.h"
-#include "PointCanopyHeightFile.h"
 #include "StackedPoints.h"
 
 namespace mcc
@@ -119,20 +118,20 @@ namespace mcc
         }
 
         std::cout << indent << "Identifying non-ground points:" << std::endl;
-        PointCanopyHeightFile nongroundPtsFile;
+        /*PointCanopyHeightFile nongroundPtsFile;
         if (writeNongroundPts_) {
           boost::format fileName("nonground_sd%d_p%|" + passFormat + "|.csv");
           nongroundPtsFile.open(boost::str(fileName % SD % pass));
-        }
+        }*/
         nPoints = U.count();
         BOOST_FOREACH( IPoint & point, U) {
           Coordinate surfaceHeight = (*rasterSurface)(point.x(), point.y());
           if (point.z() > surfaceHeight + t[SD]) {
             point.classifyAs(NonGround);
-            if (nongroundPtsFile) {
+            /*if (nongroundPtsFile) {
               Coordinate canopyHeight = point.z() - surfaceHeight;
               nongroundPtsFile.writeRow(point, canopyHeight);
-            }
+            }*/
           }
         }
 
@@ -141,10 +140,10 @@ namespace mcc
         boost::format percentFormat("%|.2|%%");
         std::string percentClassifiedStr = boost::str(percentFormat % (percentClassified * 100));
         std::cout << indent << "  " << nClassified << " points (" << percentClassifiedStr << ") classified as non-ground" << std::endl;
-        if (nongroundPtsFile) {
+        /*if (nongroundPtsFile) {
           nongroundPtsFile.close();
           std::cout << indent << "  Wrote points to file \"" << nongroundPtsFile.path() << "\"" << std::endl;
-        }
+        }*/
       } while ((percentClassified >= convergencePercent[SD]) && (U.count() > 0)); // until (n_C < convergence_% * n) or no more points
 
       if (U.count() == 0)

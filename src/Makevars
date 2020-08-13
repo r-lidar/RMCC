@@ -8,9 +8,6 @@ SOURCES = ./Algorithm.cpp \
 					./InterpolationRegion.cpp \
 					./LineIndent.cpp \
 					./LocaleUtilities.cpp \
-					./OutputCsvFile.cpp \
-					./PointCanopyHeightFile.cpp \
-					./PointCsvFile.cpp \
 					./PointIO.cpp \
 					./PointVector.cpp \
 					./ProgressBar.cpp \
