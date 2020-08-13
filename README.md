@@ -1,3 +1,5 @@
+**:exclamation::exclamation: This package is in a very early development stage :exclamation::exclamation:**
+
 R package that wraps the [MCC algorithm](https://sourceforge.net/projects/mcclidar/) for Airborne LiDAR ground filtering based on Multiscale Curvature Classification. It is made to work along with the [lidR](https://github.com/Jean-Romain/lidR) package.
 
 ## Example using lidR
