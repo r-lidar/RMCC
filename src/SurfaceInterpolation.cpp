@@ -23,7 +23,7 @@
 #include "IInterpolationRegion.h"
 #include "IPointVector.h"
 #include "IRegionGenerator.h"
-#include "LineIndent.h"
+//#include "LineIndent.h"
 #include "Point.h"
 #include "ProgressBar.h"
 #include "RasterSurface.h"
@@ -101,7 +101,8 @@ namespace mcc
 
     rasterSurface_->setNoDataValue(-9999);
 
-    LineIndent indent("  ");
+    //LineIndent indent("  ");
+    std::string indent("   ");
 
     // For each region, compute a spline for its points and then interpolate
     // heights for its cells.

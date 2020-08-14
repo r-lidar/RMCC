@@ -6,7 +6,6 @@ SOURCES = ./Algorithm.cpp \
 					./Geometry3D.cpp \
 					./GridBase.cpp \
 					./InterpolationRegion.cpp \
-					./LineIndent.cpp \
 					./LocaleUtilities.cpp \
 					./PointIO.cpp \
 					./PointVector.cpp \

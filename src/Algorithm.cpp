@@ -25,7 +25,7 @@
 #include "IRasterSurface.h"
 #include "ISurfaceInterpolation.h"
 #include "IUnclassifiedPoints.h"
-#include "LineIndent.h"
+//#include "LineIndent.h"
 #include "StackedPoints.h"
 
 namespace mcc
@@ -85,7 +85,8 @@ namespace mcc
     int nDuplicatesPutAside = duplicatePoints.putAsideAllButOnePointPerSet();
     nDuplicatesPutAside = points.removeClassified();
 
-    LineIndent indent("  ");
+    //LineIndent indent("  ");
+    std::string indent("  ");
 
     const int maxPasses = 100;  // max # of passes per scale domain
     int nDigitsForPass = (int) std::log10((double) maxPasses) + 1;

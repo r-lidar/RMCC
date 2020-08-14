@@ -25,7 +25,7 @@
 #include "Geometry3D.h"
 #include "Grid.h"
 #include "IPointVector.h"
-#include "LineIndent.h"
+//#include "LineIndent.h"
 #include "ProgressBar.h"
 #include "RasterSurface.h"
 
@@ -201,7 +201,7 @@ namespace mcc
                                  const RasterSurface & raster)
   {
     // Subdivide the raster's area into non-overlapping regions.  The goal is
-    // to have approximately the same # of points in each region. 
+    // to have approximately the same # of points in each region.
 
     int desiredNumRegions = points.count() / desiredPtsPerRegion;
       // Rounding down because one less region means possibly more pts per
@@ -223,13 +223,13 @@ namespace mcc
     int nRows = int(std::floor(rasterHeight / desiredRegionSize));
 	if (nRows > int(raster.rows())){
 		nRows = int(raster.rows());
-	} 
+	}
     double regionHeight = rasterHeight / nRows;
 
     int nColumns = int(std::floor(rasterWidth / desiredRegionSize));
 	if (nColumns > int(raster.columns())){
 		nColumns = int(raster.columns());
-	} 
+	}
     double regionWidth = rasterWidth / nColumns;
 
     // Create the 2-d arry of InterpolationRegion (nRows, nColumns)
@@ -237,7 +237,8 @@ namespace mcc
                                                                Coordinate(regionHeight),
                                                                Coordinate(regionWidth));
 
-    LineIndent indent("  ");
+    //LineIndent indent("  ");
+    std::string indent("  ");
 
     // Sort points into the regions
     std::cout << indent << "Sorting points into regions..." << std::endl;
@@ -291,7 +292,7 @@ namespace mcc
           }
         } else {
           // Case (B) - moved down into new region row, so scan across region
-          // columns, copying the cell block widths from the regions in the 
+          // columns, copying the cell block widths from the regions in the
           // top region row into their corresponding regions of the current
           // region row.
           regionRow += down(1);
