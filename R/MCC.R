@@ -10,10 +10,10 @@
 #' the ground, and 2) the sampling interval (post spacing) of the lidar data.
 #' Current lidar sensors are capable of collecting high density data (e.g., 8 pulses/m2)
 #' that translate to a spatial sampling frequency (post spacing) of 0.35 m/pulse
-#'  (1/sqrt(8 pulses/m2) = 0.35 m/pulse), which is small relative to the size of
-#'  mature trees and will oversample larger trees (i.e., nominally multiple returns/tree).
-#'  Sparser lidar data (e.g., 0.25 pulses/m2) translate to a post spacing of 2.0 m/pulse
-#'  (1/sqrt(0.25 pulses/m2) = 2.0 m/pulse), which would undersample trees and fail
+#' (1/sqrt(8 pulses/m2) = 0.35 m/pulse), which is small relative to the size of
+#' mature trees and will oversample larger trees (i.e., nominally multiple returns/tree).
+#' Sparser lidar data (e.g., 0.25 pulses/m2) translate to a post spacing of 2.0 m/pulse
+#' (1/sqrt(0.25 pulses/m2) = 2.0 m/pulse), which would undersample trees and fail
 #'  to sample some smaller trees (i.e., nominally <1 return/tree).\cr\cr
 #' Therefore, a bit of trial and error is warranted to determine the best scale
 #' and curvature parameters to use. Select a las tile containing a good variety
@@ -50,19 +50,12 @@
 #' @importFrom Rcpp sourceCpp
 MCC <- function(cloud, s = 1.5, t = 0.3)
 {
-  if(!is.numeric(s))
-    stop("'scaleDomain2Spacing' must be numeric")
-
-  if(s <= 0)
-    stop("'scaleDomain2Spacing' must be a number larger than 0")
-
-  if(!is.numeric(t))
-    stop("'curvatureThreshold' must be numeric")
-
-  if(t <= 0)
-    stop("'curvatureThreshold' must be a number larger than 0")
-
+  if(!is.numeric(s)) stop("'s' must be numeric")
+  if(s <= 0) stop("'s' must be a number larger than 0")
+  if(!is.numeric(t)) stop("'t' must be numeric")
+  if(t <= 0) stop("'t' must be a number larger than 0")
   stopifnot(is.data.frame(cloud))
   stopifnot(all(c("X", "Y", "Z") %in% names(cloud)))
+
   R_MCC(cloud, s, t)
 }
