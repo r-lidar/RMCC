@@ -110,12 +110,12 @@ namespace mcc
         std::cout << indent << "Averaging raster surface..." << std::endl;
         rasterSurface->average(3);  // kernel = 3x3
 
-        if (writeRasterSurfaces_) {
+        /*if (writeRasterSurfaces_) {
           boost::format rasterNameFmt("surface_sd%d_p%|" + passFormat + "|.asc");
           std::string rasterName = boost::str(rasterNameFmt % SD % pass);
           std::cout << indent << "Writing raster surface to file \"" << rasterName  << "\"..." << std::endl;
           rasterSurface->writeAsciiGrid(rasterName);
-        }
+        }*/
 
         std::cout << indent << "Identifying non-ground points:" << std::endl;
         /*PointCanopyHeightFile nongroundPtsFile;

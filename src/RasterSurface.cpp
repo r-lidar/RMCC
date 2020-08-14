@@ -16,7 +16,7 @@
 #include <vector>
 #include <boost/foreach.hpp>
 
-#include "AsciiGrid.h"
+//#include "AsciiGrid.h"
 #include "RasterSurface.h"
 
 namespace mcc
@@ -137,8 +137,8 @@ namespace mcc
 
   //---------------------------------------------------------------------------
 
-  void RasterSurface::writeAsciiGrid(const std::string & path) const
+  /*void RasterSurface::writeAsciiGrid(const std::string & path) const
   {
     mcc::writeAsciiGrid<Coordinate>(*this, path);
-  }
+  }*/
 }

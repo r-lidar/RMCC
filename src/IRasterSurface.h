@@ -26,7 +26,7 @@ namespace mcc
       virtual void average(int kernelSize) = 0;
       virtual Coordinate operator()(Coordinate x,
                                     Coordinate y) const = 0;
-      virtual void writeAsciiGrid(const std::string & path) const = 0;
+      //virtual void writeAsciiGrid(const std::string & path) const = 0;
       virtual ~IRasterSurface() { }
   };
 }

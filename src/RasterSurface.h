@@ -37,7 +37,7 @@ namespace mcc
       void average(int kernelSize);
       Coordinate operator()(Coordinate x,
                             Coordinate y) const;
-      void writeAsciiGrid(const std::string & path) const;
+      //void writeAsciiGrid(const std::string & path) const;
   };
 
   //---------------------------------------------------------------------------
