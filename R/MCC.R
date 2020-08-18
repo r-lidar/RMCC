@@ -38,13 +38,18 @@
 #' 1) the scale of the objects (e.g., trees) on the ground, and 2) the sampling
 #' interval (post spacing) of the lidar data.
 #' @param t numeric. Curvature threshold
-#' and non-ground. The default is 0.5.
 #'
 #' @return An integer vector containing the ids of the points that belong on the ground.
 #'
 #' @references Evans, Jeffrey S.; Hudak, Andrew T. 2007. A multiscale curvature
 #' algorithm for classifying discrete return LiDAR in forested environments.
 #' IEEE Transactions on Geoscience and Remote Sensing. 45(4): 1029-1038.
+#'
+#' @examples
+#' data(rmcc_cloud)
+#' head(rmcc_cloud)
+#'
+#' id_ground = MCC(rmcc_cloud)
 #' @export
 #' @useDynLib RMCC
 #' @importFrom Rcpp sourceCpp

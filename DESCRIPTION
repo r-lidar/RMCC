@@ -19,3 +19,5 @@ LinkingTo:
     Rcpp, BH
 Imports: 
     Rcpp
+Depends: 
+    R (>= 2.10)

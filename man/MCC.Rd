@@ -16,8 +16,7 @@ of the point cloud.}
 interval (post spacing) of the lidar data.
 }}
 
-\item{t}{numeric. Curvature threshold
-and non-ground. The default is 0.5.}
+\item{t}{numeric. Curvature threshold}
 }
 \value{
 An integer vector containing the ids of the points that belong on the ground.
@@ -55,6 +54,12 @@ than a scale parameter of 0.3 m (1 ft), even if the pulse density is 0.3 m
 (1 ft). As for the curvature threshold, a good starting value to try might be
 0.3 (if data are in meters; 1 if data are in feet), and then try varying this
 up or down by 0.1 m increments (if data are in meters; 0.3 if data are in feet).
+}
+\examples{
+data(rmcc_cloud)
+head(rmcc_cloud)
+
+id_ground = MCC(rmcc_cloud)
 }
 \references{
 Evans, Jeffrey S.; Hudak, Andrew T. 2007. A multiscale curvature
