@@ -17,7 +17,6 @@
 #include <iostream>
 
 #include <boost/foreach.hpp>
-#include <boost/make_shared.hpp>
 
 #include "tpsdemo/linalg3d-double.h"
 

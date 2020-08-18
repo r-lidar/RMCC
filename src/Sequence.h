@@ -16,7 +16,6 @@
 #define MCC_SEQUENCE_H
 
 #include <limits>
-#include <boost/iterator.hpp>
 
 namespace mcc
 {

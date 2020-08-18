@@ -18,8 +18,6 @@
 #include <iostream>
 #include <vector>
 
-#include <boost/range.hpp>
-
 #include "IClassificationVector.h"
 #include "IPointVector.h"
 #include "Point.h"

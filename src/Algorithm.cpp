@@ -17,7 +17,7 @@
 #include <memory>
 
 #include <boost/foreach.hpp>
-#include <boost/format.hpp>
+//#include <boost/format.hpp>
 
 #include "Algorithm.h"
 #include "DuplicatePoints.h"
@@ -137,8 +137,8 @@ namespace mcc
 
         nClassified = U.removeClassified();
         percentClassified = nClassified / double(nPoints);
-        boost::format percentFormat("%|.2|%%");
-        std::string percentClassifiedStr = boost::str(percentFormat % (percentClassified * 100));
+        //boost::format percentFormat("%|.2|%%");
+        //std::string percentClassifiedStr = boost::str(percentFormat % (percentClassified * 100));
         //std::cout << indent << "  " << nClassified << " points (" << percentClassifiedStr << ") classified as non-ground" << std::endl;
         /*if (nongroundPtsFile) {
           nongroundPtsFile.close();
