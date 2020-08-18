@@ -6,7 +6,6 @@ SOURCES = ./Algorithm.cpp \
 					./GridBase.cpp \
 					./InterpolationRegion.cpp \
 					./LocaleUtilities.cpp \
-					./PointIO.cpp \
 					./PointVector.cpp \
 					./R_MCC.cpp \
 					./RasterSurface.cpp \
