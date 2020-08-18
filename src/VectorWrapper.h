@@ -16,7 +16,6 @@
 #define MCC_VECTOR_ITERATORS_H
 
 #include <vector>
-#include <boost/make_shared.hpp>
 #include "PointVectorIteratorImpl.h"
 #include "IPoint.h"
 
@@ -44,14 +43,14 @@ namespace mcc
         {
         }
 
-        boost::shared_ptr< PointVectorIteratorImpl<TPoint> > clone() const
+        std::shared_ptr< PointVectorIteratorImpl<TPoint> > clone() const
         {
-          return boost::make_shared< IteratorWrapper<TPoint, TVectorIterator> >(itor_);
+          return std::make_shared< IteratorWrapper<TPoint, TVectorIterator> >(itor_);
         }
 
         TPoint & operator*() const
         {
-          return dereference<TPoint, TVectorIterator>(itor_); 
+          return dereference<TPoint, TVectorIterator>(itor_);
         }
 
         PointVectorIteratorImpl<TPoint> & operator++()

@@ -46,7 +46,7 @@ namespace mcc
 
   //-------------------------------------------------------------------------
 
-  UnclassifiedPoints::UnclassifiedPoints(boost::shared_ptr<PointVector> points)
+  UnclassifiedPoints::UnclassifiedPoints(std::shared_ptr<PointVector> points)
     : points_(points), unclassifiedPoints_(points->count())
   {
     PointVector & pts = *points_;
@@ -67,7 +67,7 @@ namespace mcc
   IPointVector::const_iterator UnclassifiedPoints::begin() const
   {
 #ifdef _MSC_VER
-    IPointVector::const_iterator itor( boost::make_shared<VectorOfPointers::const_iterator>(unclassifiedPoints_.begin()) );
+    IPointVector::const_iterator itor( std::make_shared<VectorOfPointers::const_iterator>(unclassifiedPoints_.begin()) );
 #else
     IPointVector::const_iterator itor;
     itor = boost::make_indirect_iterator(unclassifiedPoints_.begin());
@@ -80,7 +80,7 @@ namespace mcc
   IPointVector::const_iterator UnclassifiedPoints::end() const
   {
 #ifdef _MSC_VER
-    IPointVector::const_iterator itor( boost::make_shared<VectorOfPointers::const_iterator>(unclassifiedPoints_.end()) );
+    IPointVector::const_iterator itor( std::make_shared<VectorOfPointers::const_iterator>(unclassifiedPoints_.end()) );
 #else
     IPointVector::const_iterator itor;
     itor = boost::make_indirect_iterator(unclassifiedPoints_.end());
@@ -113,7 +113,7 @@ namespace mcc
   IPointVector::iterator UnclassifiedPoints::begin()
   {
 #ifdef _MSC_VER
-    IPointVector::iterator itor( boost::make_shared<VectorOfPointers::iterator>(unclassifiedPoints_.begin()) );
+    IPointVector::iterator itor( std::make_shared<VectorOfPointers::iterator>(unclassifiedPoints_.begin()) );
 #else
     IPointVector::iterator itor;
     itor = boost::make_indirect_iterator(unclassifiedPoints_.begin());
@@ -126,7 +126,7 @@ namespace mcc
   IPointVector::iterator UnclassifiedPoints::end()
   {
 #ifdef _MSC_VER
-    IPointVector::iterator itor( boost::make_shared<VectorOfPointers::iterator>(unclassifiedPoints_.end()) );
+    IPointVector::iterator itor( std::make_shared<VectorOfPointers::iterator>(unclassifiedPoints_.end()) );
 #else
     IPointVector::iterator itor;
     itor = boost::make_indirect_iterator(unclassifiedPoints_.end());

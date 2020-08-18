@@ -16,7 +16,7 @@
 #define MCC_REGULARIZED_SPLINE_H
 
 #include <vector>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "Coordinate.h"
 #include "IPoint.h"
@@ -40,7 +40,7 @@ namespace mcc
 
     private:
       std::vector<Vec> controlPoints_;
-      boost::shared_ptr<tpsdemo::Spline> spline_;
+      std::shared_ptr<tpsdemo::Spline> spline_;
   };
 }
 

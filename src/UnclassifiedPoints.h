@@ -16,7 +16,7 @@
 #define MCC_UNCLASSIFIED_POINTS_H
 
 #include <vector>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "IUnclassifiedPoints.h"
 
 namespace mcc
@@ -31,7 +31,7 @@ namespace mcc
       using IPointVector::size_type;
 
       // Create an instance that references an existing point vector.
-      UnclassifiedPoints(boost::shared_ptr<PointVector> points);
+      UnclassifiedPoints(std::shared_ptr<PointVector> points);
 
       // IUnclassifiedPoints interface
       IPointVector::size_type removeClassified();
@@ -44,7 +44,7 @@ namespace mcc
       IPointVector::const_iterator end() const;
 
     private:
-      boost::shared_ptr<PointVector> points_;
+      std::shared_ptr<PointVector> points_;
       std::vector<Point *> unclassifiedPoints_;
 
       void findUnclassifiedPoints();

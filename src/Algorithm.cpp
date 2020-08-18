@@ -14,10 +14,10 @@
 
 #include <cmath>
 #include <iostream>
+#include <memory>
 
 #include <boost/foreach.hpp>
 #include <boost/format.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include "Algorithm.h"
 #include "DuplicatePoints.h"
@@ -105,7 +105,7 @@ namespace mcc
           break;
         }
         //std::cout << "SD " << SD << " - Pass " << pass << std::endl << indent << "Interpolating " << U.count() << " points:" << std::endl;
-        boost::shared_ptr<IRasterSurface> rasterSurface = surfaceInterpolation_(U, CR[SD], tension);
+        std::shared_ptr<IRasterSurface> rasterSurface = surfaceInterpolation_(U, CR[SD], tension);
 
         //std::cout << indent << "Averaging raster surface..." << std::endl;
         rasterSurface->average(3);  // kernel = 3x3

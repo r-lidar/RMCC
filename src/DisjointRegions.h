@@ -15,7 +15,7 @@
 #ifndef MCC_DISJOINT_REGIONS_H
 #define MCC_DISJOINT_REGIONS_H
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "Grid.h"
 #include "InterpolationRegion.h"
@@ -42,7 +42,7 @@ namespace mcc
       void addNeighborPointsToCurrentRegion(int nPoints);
 
     private:
-      boost::shared_ptr< Grid<InterpolationRegion> > regions_;
+      std::shared_ptr< Grid<InterpolationRegion> > regions_;
       const RasterSurface * raster_;
       enum { RegionIteration_Initialized,
              RegionIteration_InProgress,

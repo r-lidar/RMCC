@@ -1,5 +1,5 @@
 #include <Rcpp.h>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "Algorithm.h"
 #include "PointVector.h"
@@ -11,7 +11,6 @@
 
 using namespace Rcpp;
 using namespace mcc;
-using boost::shared_ptr;
 
 // [[Rcpp::export]]
 IntegerVector R_MCC(DataFrame data, double scaleDomain2Spacing = 1.5, double curvatureThreshold = 0.3)
@@ -26,7 +25,7 @@ IntegerVector R_MCC(DataFrame data, double scaleDomain2Spacing = 1.5, double cur
   NumericVector Z = data[z];
   int n = X.size();
 
-  shared_ptr<PointVector> points(new PointVector(n));
+  std::shared_ptr<PointVector> points(new PointVector(n));
 
   for (int i = 0 ; i < n ; i++)
   {

@@ -15,7 +15,7 @@
 #ifndef MCC_SURFACE_INTERPOLATION_H
 #define MCC_SURFACE_INTERPOLATION_H
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 #include "ISurfaceInterpolation.h"
 #include "PointSelector.h"
@@ -36,13 +36,13 @@ namespace mcc
       void setXyExtent(const XyExtent & xyExtent);
 
       // ISurfaceInterpolation interface
-      boost::shared_ptr<IRasterSurface> operator()(const IPointVector & points,
+      std::shared_ptr<IRasterSurface> operator()(const IPointVector & points,
                                                    double               cellResolution,
                                                    double               tension);
 
       // Interpolate a raster surface from a selected group of points within a
       // point vector.
-      boost::shared_ptr<IRasterSurface> operator()(const IPointVector & points,
+      std::shared_ptr<IRasterSurface> operator()(const IPointVector & points,
                                                    PointSelector        pointSelector,
                                                    double               cellResolution,
                                                    double               tension);
@@ -50,7 +50,7 @@ namespace mcc
     private:
       XyExtent inputExtent_;
       double prevCellResolution_;
-      boost::shared_ptr<RasterSurface> rasterSurface_;
+      std::shared_ptr<RasterSurface> rasterSurface_;
   };
 
   //---------------------------------------------------------------------------

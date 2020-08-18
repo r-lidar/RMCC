@@ -15,7 +15,7 @@
 #ifndef MCC_ISURFACE_INTERPOLATION_H
 #define MCC_ISURFACE_INTERPOLATION_H
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 namespace mcc
 {
@@ -25,7 +25,7 @@ namespace mcc
   class ISurfaceInterpolation
   {
     public:
-      virtual boost::shared_ptr<IRasterSurface> operator()(const IPointVector & points,
+      virtual std::shared_ptr<IRasterSurface> operator()(const IPointVector & points,
                                                            double               cellResolution,
                                                            double               tension) = 0;
       virtual ~ISurfaceInterpolation() { }

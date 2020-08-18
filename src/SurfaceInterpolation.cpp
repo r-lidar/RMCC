@@ -14,10 +14,9 @@
 
 #include <cmath>
 #include <iostream>
+#include <memory>
 
 #include <boost/foreach.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include "DisjointRegions.h"
 #include "IInterpolationRegion.h"
@@ -49,7 +48,7 @@ namespace mcc
 
   //---------------------------------------------------------------------------
 
-  boost::shared_ptr<IRasterSurface> SurfaceInterpolation::operator()(const IPointVector & points,
+  std::shared_ptr<IRasterSurface> SurfaceInterpolation::operator()(const IPointVector & points,
                                                                      double               cellResolution,
                                                                      double               tension)
   {
@@ -58,7 +57,7 @@ namespace mcc
 
   //---------------------------------------------------------------------------
 
-  boost::shared_ptr<IRasterSurface> SurfaceInterpolation::operator()(const IPointVector & points,
+  std::shared_ptr<IRasterSurface> SurfaceInterpolation::operator()(const IPointVector & points,
                                                                      PointSelector        pointSelector,
                                                                      double               cellResolution,
                                                                      double               tension)
@@ -89,14 +88,14 @@ namespace mcc
 
       XYCoordinates lowerLeft(x0, y0);
 
-      rasterSurface_ = boost::make_shared<RasterSurface>(rows, cols, lowerLeft, Coordinate(cellResolution));
+      rasterSurface_ = std::make_shared<RasterSurface>(rows, cols, lowerLeft, Coordinate(cellResolution));
       prevCellResolution_ = cellResolution;
     }
 
 
     // Determine where splines will be interpolated for the points and the
     // raster.
-    boost::shared_ptr<IRegionGenerator> regions = boost::make_shared<DisjointRegions>();
+    std::shared_ptr<IRegionGenerator> regions = std::make_shared<DisjointRegions>();
     int nRegions = regions->subdivide(points, pointSelector, *rasterSurface_);
 
     rasterSurface_->setNoDataValue(-9999);

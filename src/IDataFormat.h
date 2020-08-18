@@ -15,8 +15,9 @@
 #ifndef MCC_IDATA_FORMAT_H
 #define MCC_IDATA_FORMAT_H
 
+#include <memory>
+
 #include <boost/filesystem.hpp>
-#include <boost/shared_ptr.hpp>
 
 #include "IXyzPointReader.h"
 #include "IClassificationVector.h"
@@ -28,7 +29,7 @@ namespace mcc
   {
     public:
       // Opens a data file for reading.
-      virtual boost::shared_ptr<IXyzPointReader> openFile(const boost::filesystem::path & path) = 0;
+      virtual std::shared_ptr<IXyzPointReader> openFile(const boost::filesystem::path & path) = 0;
 
       // Copies point data from one file to another, and sets the classification
       // for the points in the new file.
@@ -37,7 +38,7 @@ namespace mcc
 												double scaleDomain2Spacing,
 												double curvatureThreshold,
                                                 const IClassificationVector &   ptClassifications) = 0;
-      
+
       virtual ~IDataFormat() { }
   };
 }

@@ -33,7 +33,7 @@ mcc::RegularizedSpline::RegularizedSpline(const std::vector<const IPoint *> & po
     i++;
   }
   try {
-    spline_ = boost::shared_ptr<tpsdemo::Spline>(new tpsdemo::Spline(controlPoints_, regularization));
+    spline_ = std::shared_ptr<tpsdemo::Spline>(new tpsdemo::Spline(controlPoints_, regularization));
   }
   catch (tpsdemo::SingularMatrixError) {
     throw SingularMatrixException(points);

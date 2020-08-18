@@ -233,7 +233,7 @@ namespace mcc
     double regionWidth = rasterWidth / nColumns;
 
     // Create the 2-d arry of InterpolationRegion (nRows, nColumns)
-    regions_ = boost::make_shared< Grid<InterpolationRegion> >(nRows, nColumns, raster.lowerLeft(),
+    regions_ = std::make_shared< Grid<InterpolationRegion> >(nRows, nColumns, raster.lowerLeft(),
                                                                Coordinate(regionHeight),
                                                                Coordinate(regionWidth));
 

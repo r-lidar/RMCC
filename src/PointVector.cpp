@@ -59,7 +59,7 @@ namespace mcc
   IPointVector::const_iterator PointVector::begin() const
   {
 #ifdef _MSC_VER
-    IPointVector::const_iterator itor( boost::make_shared<VectorOfPoints::const_iterator>(points_.begin()) );
+    IPointVector::const_iterator itor( std::make_shared<VectorOfPoints::const_iterator>(points_.begin()) );
 #else
     IPointVector::const_iterator itor;
     itor = points_.begin();
@@ -72,7 +72,7 @@ namespace mcc
   IPointVector::const_iterator PointVector::end() const
   {
 #ifdef _MSC_VER
-    IPointVector::const_iterator itor( boost::make_shared<VectorOfPoints::const_iterator>(points_.end()) );
+    IPointVector::const_iterator itor( std::make_shared<VectorOfPoints::const_iterator>(points_.end()) );
 #else
     IPointVector::const_iterator itor;
     itor = points_.end();
@@ -85,7 +85,7 @@ namespace mcc
   IPointVector::iterator PointVector::begin()
   {
 #ifdef _MSC_VER
-    IPointVector::iterator itor( boost::make_shared<VectorOfPoints::iterator>(points_.begin()) );
+    IPointVector::iterator itor( std::make_shared<VectorOfPoints::iterator>(points_.begin()) );
 #else
     IPointVector::iterator itor;
     itor = points_.begin();
@@ -98,7 +98,7 @@ namespace mcc
   IPointVector::iterator PointVector::end()
   {
 #ifdef _MSC_VER
-    IPointVector::iterator itor( boost::make_shared<VectorOfPoints::iterator>(points_.end()) );
+    IPointVector::iterator itor( std::make_shared<VectorOfPoints::iterator>(points_.end()) );
 #else
     IPointVector::iterator itor;
     itor = points_.end();
