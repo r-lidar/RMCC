@@ -15,7 +15,7 @@
 #ifndef MCC_ICLASSIFICATION_VECTOR_H
 #define MCC_ICLASSIFICATION_VECTOR_H
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 #include "PointClassification.h"
 
 namespace mcc
@@ -26,7 +26,7 @@ namespace mcc
     public:
       struct index_type
       {
-        boost::uint_least32_t value;
+        std::uint_least32_t value;
       };
 
       // Get the classification for a particular point.  The point is denoted

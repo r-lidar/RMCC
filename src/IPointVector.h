@@ -15,7 +15,7 @@
 #ifndef MCC_IPOINT_VECTOR_H
 #define MCC_IPOINT_VECTOR_H
 
-#include <boost/cstdint.hpp>
+#include <cstdint>
 /*#ifdef _MSC_VER
 // See note below.
 #include "PointVectorIterator.h"
@@ -32,7 +32,7 @@ namespace mcc
   class IPointVector
   {
     public:
-      typedef boost::uint_least32_t size_type;
+      typedef std::uint_least32_t size_type;
 
 /*#ifdef _MSC_VER
       // The Microsoft compiler crashes when compiling PointVector.cpp
