@@ -26,7 +26,7 @@
 #include "Grid.h"
 #include "IPointVector.h"
 //#include "LineIndent.h"
-#include "ProgressBar.h"
+//#include "ProgressBar.h"
 #include "RasterSurface.h"
 
 namespace mcc
@@ -238,10 +238,10 @@ namespace mcc
                                                                Coordinate(regionWidth));
 
     //LineIndent indent("  ");
-    std::string indent("  ");
+    //std::string indent("  ");
 
     // Sort points into the regions
-    std::cout << indent << "Sorting points into regions..." << std::endl;
+    //std::cout << indent << "Sorting points into regions..." << std::endl;
     BOOST_FOREACH(const IPoint & point, points) {
       Cell cell = regions_->getCell(point.x(), point.y());
       if ((*pointSelector)(point))

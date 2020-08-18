@@ -25,7 +25,7 @@
 #include "IRegionGenerator.h"
 //#include "LineIndent.h"
 #include "Point.h"
-#include "ProgressBar.h"
+//#include "ProgressBar.h"
 #include "RasterSurface.h"
 #include "RegularizedSpline.h"
 #include "SplineExceptions.h"
@@ -102,13 +102,12 @@ namespace mcc
     rasterSurface_->setNoDataValue(-9999);
 
     //LineIndent indent("  ");
-    std::string indent("   ");
+
 
     // For each region, compute a spline for its points and then interpolate
     // heights for its cells.
-    std::cout << indent << "Computing splines for regions and cell heights for raster surface:" << std::endl
-              << indent << "  ";
-    ProgressBar progressBar(std::cout, nRegions);
+    //std::cout << indent << "Computing splines for regions and cell heights for raster surface:" << std::endl << indent << "  ";
+    //ProgressBar progressBar(std::cout, nRegions);
     int nSplinesComputed = 0;
     while (const IInterpolationRegion * region = regions->getNextRegion()) {
       bool splineComputed = false;
@@ -131,9 +130,9 @@ namespace mcc
         }
       }
       nSplinesComputed++;
-      progressBar.update(nSplinesComputed);
+      //progressBar.update(nSplinesComputed);
     }
-    std::cout << std::endl;
+    //std::cout << std::endl;
 
     return rasterSurface_;
   }

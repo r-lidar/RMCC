@@ -9,7 +9,6 @@ SOURCES = ./Algorithm.cpp \
 					./LocaleUtilities.cpp \
 					./PointIO.cpp \
 					./PointVector.cpp \
-					./ProgressBar.cpp \
 					./R_MCC.cpp \
 					./RasterSurface.cpp \
 					./RcppExports.cpp \

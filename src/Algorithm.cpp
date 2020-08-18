@@ -73,27 +73,27 @@ namespace mcc
 
     // Locate points that are vertically stacked (at same x,y coordinates), and
     // within each stack, classify all points but the lowest one as non-ground.
-    std::cout << "Searching for points with the same x,y coordinates..." << std::endl;
+    //std::cout << "Searching for points with the same x,y coordinates..." << std::endl;
     std::vector<IPoint *> unclassifiedDuplicates;
     StackedPoints::classifyPointsAtSameXY(points, unclassifiedDuplicates);
     int nClassified = points.removeClassified();
-    std::cout << "  " << nClassified << " points classified as non-ground" << std::endl;
+    //std::cout << "  " << nClassified << " points classified as non-ground" << std::endl;
 
     DuplicatePoints duplicatePoints(unclassifiedDuplicates);
     std::string pluralEnding = (duplicatePoints.setCount() == 1) ? "" : "s";
-    std::cout << "Identified " << duplicatePoints.setCount() << " set" << pluralEnding << " of unclassified duplicate points" << std::endl;
+    //std::cout << "Identified " << duplicatePoints.setCount() << " set" << pluralEnding << " of unclassified duplicate points" << std::endl;
     int nDuplicatesPutAside = duplicatePoints.putAsideAllButOnePointPerSet();
     nDuplicatesPutAside = points.removeClassified();
 
     //LineIndent indent("  ");
-    std::string indent("  ");
+    //std::string indent("  ");
 
     const int maxPasses = 100;  // max # of passes per scale domain
     int nDigitsForPass = (int) std::log10((double) maxPasses) + 1;
-    std::string passFormat = boost::str(boost::format("0%d") % nDigitsForPass);
+    //std::string passFormat = boost::str(boost::format("0%d") % nDigitsForPass);
 
     for (int SD = 1; SD <= 3; SD++) {
-      std::cout << "Scale domain: " << SD << " (cell resolution: " << CR[SD] << ")" << std::endl;
+      //std::cout << "Scale domain: " << SD << " (cell resolution: " << CR[SD] << ")" << std::endl;
       int nPoints;
       int nClassified;
       double percentClassified;
@@ -101,14 +101,13 @@ namespace mcc
       do {
         pass++;
         if (pass > maxPasses) {
-          std::cout << "Maximum # of passes reached for scale domain " << SD << std::endl;
+          //std::cout << "Maximum # of passes reached for scale domain " << SD << std::endl;
           break;
         }
-        std::cout << "SD " << SD << " - Pass " << pass << std::endl
-                  << indent << "Interpolating " << U.count() << " points:" << std::endl;
+        //std::cout << "SD " << SD << " - Pass " << pass << std::endl << indent << "Interpolating " << U.count() << " points:" << std::endl;
         boost::shared_ptr<IRasterSurface> rasterSurface = surfaceInterpolation_(U, CR[SD], tension);
 
-        std::cout << indent << "Averaging raster surface..." << std::endl;
+        //std::cout << indent << "Averaging raster surface..." << std::endl;
         rasterSurface->average(3);  // kernel = 3x3
 
         /*if (writeRasterSurfaces_) {
@@ -118,7 +117,7 @@ namespace mcc
           rasterSurface->writeAsciiGrid(rasterName);
         }*/
 
-        std::cout << indent << "Identifying non-ground points:" << std::endl;
+        //std::cout << indent << "Identifying non-ground points:" << std::endl;
         /*PointCanopyHeightFile nongroundPtsFile;
         if (writeNongroundPts_) {
           boost::format fileName("nonground_sd%d_p%|" + passFormat + "|.csv");
@@ -140,7 +139,7 @@ namespace mcc
         percentClassified = nClassified / double(nPoints);
         boost::format percentFormat("%|.2|%%");
         std::string percentClassifiedStr = boost::str(percentFormat % (percentClassified * 100));
-        std::cout << indent << "  " << nClassified << " points (" << percentClassifiedStr << ") classified as non-ground" << std::endl;
+        //std::cout << indent << "  " << nClassified << " points (" << percentClassifiedStr << ") classified as non-ground" << std::endl;
         /*if (nongroundPtsFile) {
           nongroundPtsFile.close();
           std::cout << indent << "  Wrote points to file \"" << nongroundPtsFile.path() << "\"" << std::endl;
@@ -152,13 +151,13 @@ namespace mcc
     }
 
     // Classify all the remaining points as ground
-    std::cout << "Classifying " << U.count() << " points as ground..." << std::endl;
+    //std::cout << "Classifying " << U.count() << " points as ground..." << std::endl;
     BOOST_FOREACH( IPoint & point, U) {
       point.classifyAs(Ground);
     }
 
     pluralEnding = (nDuplicatesPutAside == 1) ? "" : "s";
-    std::cout << "Copying classifications to " << nDuplicatesPutAside << " duplicate point" << pluralEnding << "..." << std::endl;
+    //std::cout << "Copying classifications to " << nDuplicatesPutAside << " duplicate point" << pluralEnding << "..." << std::endl;
     duplicatePoints.copyClassificationAmongPointsInSet();
   }
 }
