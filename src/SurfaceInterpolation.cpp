@@ -27,7 +27,7 @@
 //#include "ProgressBar.h"
 #include "RasterSurface.h"
 #include "RegularizedSpline.h"
-#include "SplineExceptions.h"
+//#include "SplineExceptions.h"
 #include "SurfaceInterpolation.h"
 #include "XYCoordinates.h"
 
@@ -118,7 +118,7 @@ namespace mcc
             (*rasterSurface_)[cell] = spline.interpolateHeight(cell.x(), cell.y());
           }
         }
-        catch (SingularMatrixException) {
+        catch (const std::exception&) {
           // Add another neighboring point and try the spline calculation again.
           regions->addNeighborPointsToCurrentRegion(1);
 
