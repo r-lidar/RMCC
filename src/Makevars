@@ -1,4 +1,3 @@
-PKG_CPPFLAGS = -Wno-deprecated-declarations
 SOURCES = ./Algorithm.cpp \
 					./CoordinateInterval.cpp \
 					./DisjointRegions.cpp \
