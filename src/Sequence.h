@@ -27,8 +27,7 @@ namespace mcc
   {
     public:
       // Create a sequence [start, end]
-      Sequence(T start,
-               T end);
+      Sequence(T start, T end);
 
       class iterator;
       typedef iterator const_iterator;
@@ -48,14 +47,21 @@ namespace mcc
   //---------------------------------------------------------------------------
 
   template <typename T>
-  class Sequence<T>::iterator : public std::iterator<std::forward_iterator_tag, T>
+  class Sequence<T>::iterator
   {
     public:
-      iterator(T value,
-               int increment);
+      using iterator_category = std::forward_iterator_tag;
+      using value_type = T;
+      using difference_type = T;
+      using pointer = T*;
+      using reference = T&;
+
+    public:
+      iterator(T value, int increment);
       T & operator*();
       iterator & operator++();
       bool operator==(const iterator & other);
+      bool operator!=(const iterator & other);
 
     private:
       T value_;
@@ -66,12 +72,10 @@ namespace mcc
   //---------------------------------------------------------------------------
 
   template <typename T>
-  Sequence<T>::iterator::iterator(T value,
-                                  int increment)
+  Sequence<T>::iterator::iterator(T value, int increment)
     : value_(value),
       increment_(increment),
-      lastValue_(increment > 0 ? std::numeric_limits<T>::max()
-                               : std::numeric_limits<T>::min())
+      lastValue_(increment > 0 ? std::numeric_limits<T>::max() : std::numeric_limits<T>::min())
   {
   }
 
@@ -89,6 +93,7 @@ namespace mcc
       increment_ = 0;         // So we don't advance past last value
     else
       value_ += increment_;
+
     return *this;
   }
 
@@ -100,19 +105,27 @@ namespace mcc
     return (value_ == other.value_) && (increment_ == other.increment_);
   }
 
+  template <typename T>
+  inline
+  bool Sequence<T>::iterator::operator!=(const typename Sequence<T>::iterator & other)
+  {
+    // value AND increment must be the same
+    return (value_ != other.value_) || (increment_ != other.increment_);
+  }
+
   //---------------------------------------------------------------------------
 
   template <typename T>
   inline
-  Sequence<T>::Sequence(T start,
-                        T end)
-    : start_(start), end_(end), increment_(start <= end ? 1 : -1)
+  Sequence<T>::Sequence(T start, T end) :
+    start_(start),
+    end_(end),
+    increment_(start <= end ? 1 : -1)
   {
     // If we're counting up and end value is the maximum value for T, then
     // we set the end increment to 0, since we can't represent end+1 in T.
     if ((increment_ == 1) && (end == std::numeric_limits<T>::max()))
       end_increment_ = 0;
-
     // If we're counting down and end value is the minimum value for T, then
     // we set the end increment to 0, since we can't represent end-1 in T.
     else if ((increment_ == -1) && (end == std::numeric_limits<T>::min()))
