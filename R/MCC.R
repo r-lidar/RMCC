@@ -49,7 +49,7 @@
 #' data(rmcc_cloud)
 #' head(rmcc_cloud)
 #'
-#' id_ground = MCC(rmcc_cloud)
+#' id_ground = MCC(rmcc_cloud, s = 3.5, t = 0.3)
 #' @export
 #' @useDynLib RMCC
 #' @importFrom Rcpp sourceCpp

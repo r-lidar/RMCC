@@ -59,7 +59,7 @@ up or down by 0.1 m increments (if data are in meters; 0.3 if data are in feet).
 data(rmcc_cloud)
 head(rmcc_cloud)
 
-id_ground = MCC(rmcc_cloud)
+id_ground = MCC(rmcc_cloud, s = 3.5, t = 0.3)
 }
 \references{
 Evans, Jeffrey S.; Hudak, Andrew T. 2007. A multiscale curvature
