@@ -34,30 +34,8 @@ namespace mcc
     public:
       typedef std::uint_least32_t size_type;
 
-/*#ifdef _MSC_VER
-      // The Microsoft compiler crashes when compiling PointVector.cpp
-      // (perhaps the combination of IteratorTypeErase::any_iterator and
-      // boost::indirect_iterator is too complex template code for it to
-      // handle).  Anyhow, as a workaround, we use a template for concrete
-      // classes that implement iterators using the Pimpl idiom.
-      typedef PointVectorIterator<IPoint>
-      iterator;
-
-      typedef PointVectorIterator<const IPoint>
-      const_iterator;
-#else*/
-      typedef IteratorTypeErasure::any_iterator<
-        IPoint,
-        boost::forward_traversal_tag
-      >
-      iterator;
-
-      typedef IteratorTypeErasure::any_iterator<
-        const IPoint,
-        boost::forward_traversal_tag
-      >
-      const_iterator;
-//#endif
+      typedef IteratorTypeErasure::any_iterator<IPoint, boost::forward_traversal_tag> iterator;
+      typedef IteratorTypeErasure::any_iterator<const IPoint, boost::forward_traversal_tag> const_iterator;
 
       // Number of points in vector
       virtual size_type count() const = 0;

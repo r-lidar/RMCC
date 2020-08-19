@@ -23,10 +23,8 @@ namespace mcc
   class IUnclassifiedPoints : public IPointVector
   {
     public:
-
       // Remove all the points that have recently been classified.
       virtual size_type removeClassified() = 0;
-
       virtual ~IUnclassifiedPoints() { }
   };
 }
