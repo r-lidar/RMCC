@@ -13,11 +13,7 @@
 // limitations under the License.
 
 #include <algorithm>
-#ifdef _MSC_VER
-#include "VectorWrapper.h"
-#else
 #include <boost/iterator/indirect_iterator.hpp>
-#endif
 #include "Point.h"
 #include "PointClassification.h"
 #include "UnclassifiedPoints.h"

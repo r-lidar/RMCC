@@ -16,14 +16,8 @@
 #define MCC_IPOINT_VECTOR_H
 
 #include <cstdint>
-/*#ifdef _MSC_VER
-// See note below.
-#include "PointVectorIterator.h"
-#include "PointVectorIteratorImpl.h"
-#else*/
 #include <boost/iterator.hpp>
 #include "any_iterator/any_iterator.hpp"
-//#endif
 
 namespace mcc
 {

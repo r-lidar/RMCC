@@ -13,33 +13,11 @@
 // limitations under the License.
 
 #include <algorithm>
-#ifdef _MSC_VER
-#include "VectorWrapper.h"
-#endif
 #include "Point.h"
 #include "PointVector.h"
 
 namespace mcc
 {
-#ifdef _MSC_VER
-  // Specializations of a template function for a standard vector of Point.
-  template<>
-  inline
-  IPoint & dereference(const std::vector<Point>::iterator & itor)
-  {
-    return *itor;
-  }
-
-  template<>
-  inline
-  const IPoint & dereference(const std::vector<Point>::const_iterator & itor)
-  {
-    return *itor;
-  }
-
-  typedef VectorWrapper<Point> VectorOfPoints;
-#endif
-
   //-------------------------------------------------------------------------
 
   PointVector::PointVector(IPointVector::size_type size)
@@ -58,12 +36,8 @@ namespace mcc
 
   IPointVector::const_iterator PointVector::begin() const
   {
-#ifdef _MSC_VER
-    IPointVector::const_iterator itor( std::make_shared<VectorOfPoints::const_iterator>(points_.begin()) );
-#else
     IPointVector::const_iterator itor;
     itor = points_.begin();
-#endif
     return itor;
   }
 
@@ -71,12 +45,8 @@ namespace mcc
 
   IPointVector::const_iterator PointVector::end() const
   {
-#ifdef _MSC_VER
-    IPointVector::const_iterator itor( std::make_shared<VectorOfPoints::const_iterator>(points_.end()) );
-#else
     IPointVector::const_iterator itor;
     itor = points_.end();
-#endif
     return itor;
   }
 
@@ -84,12 +54,8 @@ namespace mcc
 
   IPointVector::iterator PointVector::begin()
   {
-#ifdef _MSC_VER
-    IPointVector::iterator itor( std::make_shared<VectorOfPoints::iterator>(points_.begin()) );
-#else
     IPointVector::iterator itor;
     itor = points_.begin();
-#endif
     return itor;
   }
 
@@ -97,12 +63,8 @@ namespace mcc
 
   IPointVector::iterator PointVector::end()
   {
-#ifdef _MSC_VER
-    IPointVector::iterator itor( std::make_shared<VectorOfPoints::iterator>(points_.end()) );
-#else
     IPointVector::iterator itor;
     itor = points_.end();
-#endif
     return itor;
   }
 }
