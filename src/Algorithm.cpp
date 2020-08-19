@@ -75,7 +75,7 @@ namespace mcc
     //std::cout << "Searching for points with the same x,y coordinates..." << std::endl;
     std::vector<IPoint *> unclassifiedDuplicates;
     StackedPoints::classifyPointsAtSameXY(points, unclassifiedDuplicates);
-    int nClassified = points.removeClassified();
+    //int nClassified = points.removeClassified();
     //std::cout << "  " << nClassified << " points classified as non-ground" << std::endl;
 
     DuplicatePoints duplicatePoints(unclassifiedDuplicates);
@@ -88,7 +88,7 @@ namespace mcc
     //std::string indent("  ");
 
     const int maxPasses = 100;  // max # of passes per scale domain
-    int nDigitsForPass = (int) std::log10((double) maxPasses) + 1;
+    //int nDigitsForPass = (int) std::log10((double) maxPasses) + 1;
     //std::string passFormat = boost::str(boost::format("0%d") % nDigitsForPass);
 
     for (int SD = 1; SD <= 3; SD++) {

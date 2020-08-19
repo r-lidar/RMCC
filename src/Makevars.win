@@ -18,3 +18,4 @@ SOURCES = ./Algorithm.cpp \
 
 TEMP1   =  $(SOURCES:.cpp=.o)
 OBJECTS =  $(TEMP1:.c=.o)
+CXX_STD = CXX11

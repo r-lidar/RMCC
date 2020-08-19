@@ -33,7 +33,7 @@ mcc::RegularizedSpline::RegularizedSpline(const std::vector<const IPoint *> & po
   try {
     spline_ = std::shared_ptr<tpsdemo::Spline>(new tpsdemo::Spline(controlPoints_, regularization));
   }
-  catch (tpsdemo::SingularMatrixError) {
+  catch (tpsdemo::SingularMatrixError& e) {
     throw std::runtime_error("Singular matrix while computing thin plate spline");
   }
 }

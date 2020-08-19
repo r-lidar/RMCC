@@ -94,7 +94,8 @@ namespace mcc
     // Determine where splines will be interpolated for the points and the
     // raster.
     std::shared_ptr<IRegionGenerator> regions = std::make_shared<DisjointRegions>();
-    int nRegions = regions->subdivide(points, pointSelector, *rasterSurface_);
+    //int nRegions = regions->subdivide(points, pointSelector, *rasterSurface_);
+    regions->subdivide(points, pointSelector, *rasterSurface_);
 
     rasterSurface_->setNoDataValue(-9999);
 
