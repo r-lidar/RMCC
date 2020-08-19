@@ -15,11 +15,10 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-LinkingTo: 
-    Rcpp, BH
+LinkingTo: Rcpp, BH
 Imports: 
     Rcpp
 Depends: 
     R (>= 2.10)
 Suggests: 
-    testthat
+    tinytest
