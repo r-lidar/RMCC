@@ -16,7 +16,6 @@
 #include <iostream>
 #include <memory>
 
-#include <boost/foreach.hpp>
 //#include <boost/format.hpp>
 
 #include "Algorithm.h"
@@ -124,7 +123,7 @@ namespace mcc
           nongroundPtsFile.open(boost::str(fileName % SD % pass));
         }*/
         nPoints = U.count();
-        BOOST_FOREACH( IPoint & point, U) {
+        for( IPoint & point : U) {
           Coordinate surfaceHeight = (*rasterSurface)(point.x(), point.y());
           if (point.z() > surfaceHeight + t[SD]) {
             point.classifyAs(NonGround);
@@ -152,7 +151,7 @@ namespace mcc
 
     // Classify all the remaining points as ground
     //std::cout << "Classifying " << U.count() << " points as ground..." << std::endl;
-    BOOST_FOREACH( IPoint & point, U) {
+    for( IPoint & point : U) {
       point.classifyAs(Ground);
     }
 

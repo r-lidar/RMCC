@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <boost/foreach.hpp>
-
 #include "IPoint.h"
 #include "RegularizedSpline.h"
 //#include "SplineExceptions.h"
@@ -25,7 +23,7 @@ mcc::RegularizedSpline::RegularizedSpline(const std::vector<const IPoint *> & po
   : controlPoints_(points.size())
 {
   std::vector<Vec>::size_type i = 0;
-  BOOST_FOREACH(const IPoint * point, points) {
+  for(const IPoint * point : points) {
     // NOTE: Although the TPS Demo documentation has equations showing the z
     // coordinate as height, its source code treats y coordinate as the height.
     // So we interchange the y and z coordinates as we pass points to it.

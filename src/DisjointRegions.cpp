@@ -16,8 +16,6 @@
 #include <cmath>
 #include <iostream>
 
-#include <boost/foreach.hpp>
-
 #include "tpsdemo/linalg3d-double.h"
 
 #include "DisjointRegions.h"
@@ -180,12 +178,12 @@ namespace mcc
 
     int nCellsPerEdge = neighborhoodSize - 1;
 
-    BOOST_FOREACH(const RelativeLocation & locOfNextNeighborAlongEdge, traverseRingAlongEdges) {
+    for(const RelativeLocation & locOfNextNeighborAlongEdge : traverseRingAlongEdges) {
       for (int i = 0; i < nCellsPerEdge; ++i) {
         neighborLocation += locOfNextNeighborAlongEdge;
         const InterpolationRegion * neighbor = getNeighbor(regions, cell, neighborLocation);
         if (neighbor) {
-          BOOST_FOREACH(const IPoint * point, neighbor->pts) {
+          for (const IPoint * point : neighbor->pts) {
             neighborPts.push_back(NeighborPoint(point, xInterval, yInterval));
           }
         }
@@ -241,7 +239,7 @@ namespace mcc
 
     // Sort points into the regions
     //std::cout << indent << "Sorting points into regions..." << std::endl;
-    BOOST_FOREACH(const IPoint & point, points) {
+    for (const IPoint & point : points) {
       Cell cell = regions_->getCell(point.x(), point.y());
       if ((*pointSelector)(point))
         (*regions_)[cell].pts.push_back(& point);
@@ -252,7 +250,7 @@ namespace mcc
     // Determine the cell block for each region.
     int regionRow = regions_->topRow();
     Coordinate regionRow_minY = regions_->getYInterval(regionRow).lowerBound();
-    BOOST_FOREACH(unsigned int rasterRow, raster.topToBottom()) {
+    for (unsigned int rasterRow : raster.topToBottom()) {
       // If first (top) row, then scan across cell columns computing widths of
       // cell blocks.
       if (rasterRow == raster.topRow()) {
@@ -260,7 +258,7 @@ namespace mcc
           unsigned int regionColumn = regions_->leftColumn();
           InterpolationRegion * currentRegion = &( (*regions_)(regionTopRow, regionColumn) );
           Coordinate currentRegion_maxX = regions_->getXInterval(regionColumn).upperBound();
-          BOOST_FOREACH(unsigned int rasterColumn, raster.leftToRight()) {
+          for (unsigned int rasterColumn : raster.leftToRight()) {
             Cell cell = raster.getCell(raster.topRow(), rasterColumn);
             if (rasterColumn == raster.leftColumn()) {
               currentRegion->cellBlock = CellBlock(cell /* upperLeft */);  // cell block height and width = 1
@@ -286,7 +284,7 @@ namespace mcc
         if (leftMostCell.y() > regionRow_minY) {
           // Case (A) - still in current region row, so go through the regions
           // on the current region row, and increment their cell block heights.
-          BOOST_FOREACH(unsigned int regionColumn, regions_->leftToRight()) {
+          for (unsigned int regionColumn : regions_->leftToRight()) {
             (*regions_)(regionRow, regionColumn).cellBlock.height += 1;
           }
         } else {
@@ -296,7 +294,7 @@ namespace mcc
           // region row.
           regionRow += down(1);
           regionRow_minY = regions_->getYInterval(regionRow).lowerBound();
-          BOOST_FOREACH(unsigned int regionColumn, regions_->leftToRight()) {
+          for (unsigned int regionColumn : regions_->leftToRight()) {
             const InterpolationRegion & correspondingRegionInTopRow = (*regions_)(regions_->topRow(), regionColumn);
             int upperLeftCell_column = correspondingRegionInTopRow.cellBlock.upperLeftCell.column();
 
@@ -400,8 +398,8 @@ namespace mcc
     unsigned int blockLeft   = upperLeftCell.column();
     unsigned int blockRight  = blockLeft + right(cellBlock.width - 1);
 
-    BOOST_FOREACH(unsigned int row, Sequence<unsigned int>(blockTop, blockBottom)) {
-      BOOST_FOREACH(unsigned int column, Sequence<unsigned int>(blockLeft, blockRight)) {
+    for (unsigned int row : Sequence<unsigned int>(blockTop, blockBottom)) {
+      for (unsigned int column : Sequence<unsigned int>(blockLeft, blockRight)) {
         InterpolationRegion::cellList.push_back(raster_->getCell(row, column));
       }
     }

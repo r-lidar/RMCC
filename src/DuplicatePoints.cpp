@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <boost/foreach.hpp>
-
 #include "DuplicatePoints.h"
 #include "IPoint.h"
 
@@ -24,7 +22,7 @@ namespace mcc
     std::vector<IPoint *> * currentSet = 0;
     IPoint * previousPoint = 0;
 
-    BOOST_FOREACH( IPoint * point, unclassifiedDuplicates ) {
+    for( IPoint * point : unclassifiedDuplicates ) {
       if (previousPoint && (previousPoint->x() == point->x())
                         && (previousPoint->y() == point->y())
                         && (previousPoint->z() == point->z())) {
@@ -44,9 +42,9 @@ namespace mcc
   int DuplicatePoints::putAsideAllButOnePointPerSet()
   {
     int nPutAside = 0;
-    BOOST_FOREACH( std::vector<IPoint *> & set , sets_ ) {
+    for( std::vector<IPoint *> & set : sets_ ) {
       IPoint * firstPoint = 0;
-      BOOST_FOREACH( IPoint * point, set ) {
+      for( IPoint * point : set ) {
         if (firstPoint)
           point->classifyAs(Duplicate);
         else
@@ -61,10 +59,10 @@ namespace mcc
 
   void DuplicatePoints::copyClassificationAmongPointsInSet()
   {
-    BOOST_FOREACH( std::vector<IPoint *> & set , sets_ ) {
+    for( std::vector<IPoint *> & set : sets_ ) {
       IPoint * firstPoint = 0;
       PointClassification classificationToCopy = NotYetClassified;
-      BOOST_FOREACH( IPoint * point, set ) {
+      for( IPoint * point : set ) {
         if (firstPoint)
           point->classifyAs(classificationToCopy);
         else {

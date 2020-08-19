@@ -15,8 +15,6 @@
 #include <algorithm>
 #include <cassert>
 
-#include <boost/foreach.hpp>
-
 #include "IPoint.h"
 #include "IUnclassifiedPoints.h"
 #include "StackedPoints.h"
@@ -47,7 +45,7 @@ namespace mcc
     // A vector of pointers to the unclassified points
     std::vector<IPoint *> pts(points.count());
     std::vector<IPoint *>::size_type i = 0;
-    BOOST_FOREACH(IPoint & pt, points) {
+    for(IPoint & pt : points) {
       pts[i] = &pt;
       ++i;
     }

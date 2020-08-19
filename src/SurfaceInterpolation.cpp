@@ -16,8 +16,6 @@
 #include <iostream>
 #include <memory>
 
-#include <boost/foreach.hpp>
-
 #include "DisjointRegions.h"
 #include "IInterpolationRegion.h"
 #include "IPointVector.h"
@@ -114,7 +112,7 @@ namespace mcc
         try {
           RegularizedSpline spline(region->points(), 0.0);
           splineComputed = true;
-          BOOST_FOREACH(const Cell & cell, region->cells()) {
+          for(const Cell & cell : region->cells()) {
             (*rasterSurface_)[cell] = spline.interpolateHeight(cell.x(), cell.y());
           }
         }

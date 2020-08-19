@@ -14,7 +14,6 @@
 
 #include <cassert>
 #include <vector>
-#include <boost/foreach.hpp>
 
 //#include "AsciiGrid.h"
 #include "RasterSurface.h"
@@ -76,19 +75,19 @@ namespace mcc
     // "radius" for the square kernel
     unsigned int kernelRadius = (kernelSize - 1) / 2;
 
-    BOOST_FOREACH(unsigned int row, topToBottom()) {
+    for(unsigned int row : topToBottom()) {
       // If the buffer row that we're about to fill has averages to be copied,
       // then do copying now.
       if (rowNeedsCopying[currentBufferRow]) {
         unsigned int rasterRow = correspondingRasterRow[currentBufferRow];
-        BOOST_FOREACH(unsigned int column, leftToRight()) {
+        for(unsigned int column : leftToRight()) {
           grid(rasterRow, column) = averages[currentBufferRow][column];
         }
         rowNeedsCopying[currentBufferRow] = false;
       }
 
       // Compute averages for current raster row, and store them in buffer
-      BOOST_FOREACH(unsigned int column, leftToRight()) {
+      for(unsigned int column : leftToRight()) {
         Coordinate average;
         // If a cell has NODATA value, then leave it as such.  Only compute an
         // average if the cell has a value.
@@ -103,8 +102,8 @@ namespace mcc
           unsigned int kernelRight  = getKernelEdge(column, rightColumn(), kernelRadius);
           Coordinate sum = 0;
           unsigned int count = 0;
-          BOOST_FOREACH(unsigned int r, Sequence<unsigned int>(kernelTop, kernelBottom)) {
-            BOOST_FOREACH(unsigned int c, Sequence<unsigned int>(kernelLeft, kernelRight)) {
+          for (unsigned int r : Sequence<unsigned int>(kernelTop, kernelBottom)) {
+            for (unsigned int c : Sequence<unsigned int>(kernelLeft, kernelRight)) {
               Coordinate value;
               if (grid.getData(r, c, value)) {
                 sum += value;
@@ -127,7 +126,7 @@ namespace mcc
     for (int bufferRow = 0; bufferRow < kernelSize; ++bufferRow) {
       if (rowNeedsCopying[bufferRow]) {
         unsigned int rasterRow = correspondingRasterRow[bufferRow];
-        BOOST_FOREACH(unsigned int column, leftToRight()) {
+        for (unsigned int column : leftToRight()) {
           grid(rasterRow, column) = averages[bufferRow][column];
         }
         rowNeedsCopying[bufferRow] = false;
