@@ -6,7 +6,8 @@ Authors@R: c(
     person("Jean-Romain", "Roussel", email = "jean-romain.roussel.1@ulaval.ca", role = c("aut", "cre", "cph")),
     person("Evans", "Jeffrey S", email = "", role = c("aut", "ctb", "cph"), comment = "Is the author of the mcc code"),
     person("Hudak", "Andrew T", email = "", role = c("aut", "ctb", "cph"), comment = "Is the author of the mcc code"),
-    person("Jarno", "Elonen", email = "", role = c("cph"), comment = "Is the author of thin plate spline code"))
+    person("Jarno", "Elonen", email = "", role = c("cph"), comment = "Is the author of thin plate spline code"),
+    person("Thomas", "Becker", email = "", role = c("cph"), comment = "Is the author of the any_iterator class"))
 Description: Multiscale Curvature Classification of ground returns in 3-D lidar 
     point clouds, designed for forested environments. This package is a porting 
     to R of the MCC-lidar software, Evans and Hudak (2007) <doi:10.1109/TGRS.2006.890412>.
