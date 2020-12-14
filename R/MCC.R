@@ -4,7 +4,7 @@
 #' Classification (Evans and Hudak, 2017; see references). This function is an R
 #' wrapper around the library written by the original authors of the algorithm.
 #'
-#' There are two parameters that the user must define in the command line syntax
+#' There are two parameters that the user must define
 #' to run MCC, the scale (s) parameter and the curvature threshold (t). The optimal
 #' scale parameter is a function of 1) the scale of the objects (e.g., trees) on
 #' the ground, and 2) the sampling interval (post spacing) of the lidar data.
@@ -32,11 +32,10 @@
 #' 0.3 (if data are in meters; 1 if data are in feet), and then try varying this
 #' up or down by 0.1 m increments (if data are in meters; 0.3 if data are in feet).
 #'
-#' @param cloud data.frame with 3 columns named X Y, Z containing the coordinates
-#' of the point cloud.
-#' @param s numeric. Scale parameter. The optimal scale parameter is a function of
-#' 1) the scale of the objects (e.g., trees) on the ground, and 2) the sampling
-#' interval (post spacing) of the lidar data.
+#' @param cloud data.frame with 3 columns containing the coordinates of the point cloud.
+#' @param s numeric. Scale parameter. The optimal scale parameter is a function of the scale
+#' of the objects (e.g., trees) on the ground, and the sampling interval (post spacing) of
+#' the lidar data.
 #' @param t numeric. Curvature threshold
 #'
 #' @return An integer vector containing the ids of the points that belong on the ground.
@@ -60,7 +59,6 @@ MCC <- function(cloud, s = 1.5, t = 0.3)
   if(!is.numeric(t)) stop("'t' must be numeric")
   if(t <= 0) stop("'t' must be a number larger than 0")
   stopifnot(is.data.frame(cloud))
-  stopifnot(all(c("X", "Y", "Z") %in% names(cloud)))
 
   R_MCC(cloud, s, t)
 }

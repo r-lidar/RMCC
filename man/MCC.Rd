@@ -7,14 +7,11 @@
 MCC(cloud, s = 1.5, t = 0.3)
 }
 \arguments{
-\item{cloud}{data.frame with 3 columns named X Y, Z containing the coordinates
-of the point cloud.}
+\item{cloud}{data.frame with 3 columns containing the coordinates of the point cloud.}
 
-\item{s}{numeric. Scale parameter. The optimal scale parameter is a function of
-\enumerate{
-\item the scale of the objects (e.g., trees) on the ground, and 2) the sampling
-interval (post spacing) of the lidar data.
-}}
+\item{s}{numeric. Scale parameter. The optimal scale parameter is a function of the scale
+of the objects (e.g., trees) on the ground, and the sampling interval (post spacing) of
+the lidar data.}
 
 \item{t}{numeric. Curvature threshold}
 }
@@ -27,7 +24,7 @@ Classification (Evans and Hudak, 2017; see references). This function is an R
 wrapper around the library written by the original authors of the algorithm.
 }
 \details{
-There are two parameters that the user must define in the command line syntax
+There are two parameters that the user must define
 to run MCC, the scale (s) parameter and the curvature threshold (t). The optimal
 scale parameter is a function of 1) the scale of the objects (e.g., trees) on
 the ground, and 2) the sampling interval (post spacing) of the lidar data.
