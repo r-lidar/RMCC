@@ -1,0 +1,7 @@
+The RMCC package as a whole is distributed under MIT. The RMCC package includes other open source software components. The following is a list of these components:
+
+* tpsdemo: MIT
+* any_iterator: MIT
+* mcc: Apache v2
+
+Full copies of the license agreements used by these components are included in `src/`.

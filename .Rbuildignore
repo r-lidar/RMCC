@@ -12,3 +12,4 @@
 ^man/figures$
 ^codecov\.yml$
 ^CRAN-RELEASE$
+^LICENSE\.md$
