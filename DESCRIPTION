@@ -4,7 +4,7 @@ Title: Airborne LiDAR Filtering Method Based on Multiscale Curvature
 Version: 0.1.0
 Authors@R: c(
     person("Jean-Romain", "Roussel", email = "jean-romain.roussel.1@ulaval.ca", role = c("aut", "cre")),
-    person("Evans", "Jeffrey S", email = "", role = c("aut")"),
+    person("Evans", "Jeffrey S", email = "", role = c("aut")),
     person("Hudak", "Andrew T", email = "", role = c("aut")),
     person("Green Code LLC", email = "", role = c("cph"), comment = "Author of the mcc code under US federally funded contract"),
     person("Jarno", "Elonen", email = "", role = c("cph"), comment = "Author of the included thin plate spline library"),
