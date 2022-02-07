@@ -1,9 +1,9 @@
-R package that wraps the [MCC algorithm](https://sourceforge.net/projects/mcclidar/) for Airborne LiDAR ground filtering based on Multiscale Curvature Classification. It is made to work along with the [lidR](https://github.com/Jean-Romain/lidR) package.
+R package that wraps the [MCC algorithm](https://sourceforge.net/projects/mcclidar/) for Airborne LiDAR ground filtering based on Multiscale Curvature Classification. It is made to work along with the [lidRplugins](https://github.com/Jean-Romain/lidRplugins) package.
 
-## Example using lidR (>= 3.1.0)
+## Example
 
 ```r
-library(lidR)
+library(lidRplugins)
 file <- system.file("extdata", "Topography.laz", package="lidR")
 las  <- readLAS(file, select = "xyz")
 las  <- classify_ground(las, mcc())
