@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // R_MCC
 IntegerVector R_MCC(DataFrame data, double scaleDomain2Spacing, double curvatureThreshold);
 RcppExport SEXP _RMCC_R_MCC(SEXP dataSEXP, SEXP scaleDomain2SpacingSEXP, SEXP curvatureThresholdSEXP) {
