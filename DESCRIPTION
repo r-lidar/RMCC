@@ -1,7 +1,7 @@
 Package: RMCC
 Type: Package
 Title: Airborne LiDAR Filtering Method Based on Multiscale Curvature 
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person("Jean-Romain", "Roussel", email = "jean-romain.roussel.1@ulaval.ca", role = c("aut", "cre")),
     person("Evans", "Jeffrey S", email = "", role = c("aut")),

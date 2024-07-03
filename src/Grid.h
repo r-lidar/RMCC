@@ -25,7 +25,7 @@ namespace mcc
   class Grid : public GridBase
   {
     public:
-      Grid<T>(unsigned int          rows,
+      Grid(unsigned int          rows,
               unsigned int          columns,
               const XYCoordinates & lowerLeft,
               Coordinate            cellHeight,
