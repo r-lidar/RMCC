@@ -16,7 +16,7 @@
 #define MCC_IPOINT_VECTOR_H
 
 #include <cstdint>
-#include <boost/iterator.hpp>
+#include <iterator>
 #include "any_iterator/any_iterator.hpp"
 
 namespace mcc
