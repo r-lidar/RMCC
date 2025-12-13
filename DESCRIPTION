@@ -24,3 +24,5 @@ Depends:
     R (>= 2.10)
 Suggests: 
     tinytest
+URL: https://github.com/r-lidar/RMCC
+BugReports: https://github.com/r-lidar/RMCC/issues
